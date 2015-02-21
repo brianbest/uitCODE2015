@@ -5,5 +5,5 @@ node_modules
 dist
 .tmp
 .sass-cache
-bower_components
+app/bower_components
 >>>>>>> b606887876b3b9023d296fd38a8ac5f82bc6e421
