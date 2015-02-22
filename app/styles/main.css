@@ -7,11 +7,17 @@
 body {
   padding: 0;
   background-color: #333333;
-  color:white
+  color:white ;
 
+
+}
+
+h1{
+  text-shadow: 2px 1px 2px #ffd900;
 }
 .list-group-item{
   border: solid 2px #00ccd6;
+  height: 110px;
 }
 
 h3{
@@ -19,8 +25,19 @@ h3{
 }
 
 .pull-right{
+  display: block;
   float:left;
   width: 80%;
+}
+
+.subBox{
+ width: 97%;
+  float: right;
+  border: solid 2px #00ccd6;
+  color: #000000;
+}
+.right{
+  float: right;
 }
 .vote{
   width: 20%;
@@ -28,9 +45,20 @@ h3{
   float: left;
 
 }
+
+.btn-primary{
+  border-color: #ffd900;
+  background-color: #00ccd6 ;
+
+}
 .post-row{
   width: 60%;
   margin-left: 20%;
+}
+
+.post-row-right{
+  width: 60%;
+  margin-left: 64%;
 }
 .leftBuffer{
   margin-left: 10%;

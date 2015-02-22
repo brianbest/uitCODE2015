@@ -38,26 +38,43 @@
 
     </div>
 
-    <form name="submitForm">
-      <blockquote ng-repeat="post in home.posts"></blockquote>
-      <h4>Submit a Review</h4>
+    <form class="post-row" name="submitForm" ng-controller="PostController as PostCtrl" ng-submit="PostCtrl.addPost(post)">
+
+      <!--<h4>Submit a Review</h4>-->
       <fieldset class="form-group">
-        <textarea ng-model="post.body" class="form-control" placeholder="Add a cool new article..." title="Review"></textarea>
+        <textarea  class="subBox" ng-model=post.body class="form-control" placeholder="Add a cool new article..." title="Review"></textarea>
       </fieldset>
       <fieldset class="form-group">
-        <input type="submit" class="btn btn-primary pull-right" value="Submit Review" />
+        <input type="submit" class="btn btn-primary right" value="Submit Post" />
       </fieldset>
+
+      <!--  Live Preview -->
+      <blockquote ng-show="post">
+        <strong>{{post.body}}</strong>
+        <!--{{post.body}}-->
+        <!--<cite class="clearfix">—{{review.author}}</cite>-->
+      </blockquote>
+
     </form>
 
 
-<ul><h4>Posts</h4>
+<ul><h4 class="post-row">Posts</h4>
+  <section class="post-row-right" ng-controller="TabController as tab">
+    <ul class="nav nav-pills">
+      <li ng-class="{active: tab.isSet(1)}">
+        <a href ng-click="tab.setTab(1)">Most Popular</a></li>
+      <li ng-class="{active: tab.isSet(2)}">
+        <a href ng-click="tab.setTab(2)">Most Recent</a></li>
+    </ul>
+  </section>
+  <br>
     <div class="post-row">
 
       <div class="list-group-item" ng-repeat="post in home.posts">
         <h3>
           {{post.vote}}
         <div class="pull-right">
-          {{post.name}}
+          {{post.description}}
         </div>
           </h3>
       </div>
@@ -66,14 +83,7 @@
 </ul>
 
 
-    <section class="tab" ng-controller="TabController as tab">
-      <ul class="nav nav-pills">
-        <li ng-class="{active: tab.isSet(1)}">
-          <a href ng-click="tab.setTab(1)">Most Popular</a></li>
-        <li ng-class="{active: tab.isSet(2)}">
-          <a href ng-click="tab.setTab(2)">Most Recent</a></li>
-      </ul>
-    </section>
+
 
     <div ng-show="tab.isSet(1)">
       <h1>Most Popular</h1>

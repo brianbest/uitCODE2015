@@ -4,10 +4,17 @@
   var app = angular.module('home', []);
 
   app.controller('HomeController', function () {
+    this.posts = articles;
+
+  });
+
+  app.controller('PostController', function(){
     this.posts = {};
-    this.addPost = function(articles){
-      articles.posts.push(this.post);
-      this.post={}
+    this.addPost = function(post){
+      console.log('articles', post);
+      articles.push({name:'Carol', description: post.body, vote:9});
+
+      //this.post={}
     }
 
   });
@@ -33,12 +40,12 @@
 
   var articles = [{
     name: 'Carol',
-    description: "Some gems have hidden qualities beyond their luster, beyond their shine... Azurite is one of those gems.",
+    description: "http://www.keyboardninja.eu/webdevelopment/a-simple-search-with-angularjs-and-php",
     vote: 8
   },
     {
       name: 'Lawrence',
-      description: "Some gems have hidden qualities beyond their luster, beyond their shine... Azurite is one of those gems.",
+      description: "http://stackoverflow.com/questions/21673404/error-ngareq-from-angular-controller",
       vote: 19
     },
     {
