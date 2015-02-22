@@ -4,27 +4,21 @@ header('content-type: application/json; charset=utf-8');
 
 include("$_SERVER[DOCUMENT_ROOT]/connect.php");
 
-if (isset($_POST['content'])) {
-    $request = $_POST;
-} else {
-    $request = $_GET;
-}
-
-if (isset($request['username'])) {
-    $userId = getUserId($request['username']);
+if (isset($_POST['username'])) {
+    $userId = getUserId($_POST['username']);
 } else {
     $userId = 0;
 }
 
-if (isset($request['tags'])) {
-    $tags = $request['tags'];
+if (isset($_POST['tags'])) {
+    $tags = $_POST['tags'];
 } else {
     $tags = '';
 }
 
-$content = $request['content'];
+$content = $_POST['content'];
 
-$sql = "insert into posts (user_id, votes, content, tags) values ($userId, 0, '".mysql_real_escape_string($content)."', '".mysql_real_escape_string($tags)."')";
+$sql = "insert into posts (user_id, votes, content, tags, timestamp) values ($userId, 0, '".mysql_real_escape_string($content)."', '".mysql_real_escape_string($tags)."', now())";
 $result = mysql_query($sql);
 
 echo "{\"status\":\"pass\"}";

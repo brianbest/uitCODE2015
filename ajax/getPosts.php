@@ -48,6 +48,7 @@ for ($i=0;$i<count($tags);$i++) {
 if ($username != null) {
     $sql .= " and username = '".mysql_real_escape_string($username)."'";
 }
+$sql .= " order by votes desc";
 
 $sql .= " limit $index, $amount";
 $result = mysql_query($sql);
