@@ -3,7 +3,7 @@
 header('content-type: application/json; charset=utf-8');
 
 include("$_SERVER[DOCUMENT_ROOT]/connect.php");
-include("$_SERVER[DOCUMENT_ROOT]/includes/accountUtil.inc");
+include("$_SERVER[DOCUMENT_ROOT]/project1/includes/accountUtil.inc");
 
 if (!isset($_GET['username'])) {
     showErrorJson('missing username');
@@ -42,10 +42,18 @@ if (doesEmailExist($email)) {
 $salt = strtolower($username.$email);
 $cryptPassword = cryptPassword($salt, $password);
 
-$sql = "insert into users (username, email, crypt_password, salt) values ('".mysql_real_escape_string($username)."', '".mysql_real_escape_string($email)."','".mysql_real_escape_string($cryptPassword)."','".mysql_real_escape_string($salt)."')"; 
+$sql = "insert into users (username, email, crypt_password, salt) values ('".mysql_real_escape_string($username)."', '".mysql_real_escape_string($email)."','".mysql_real_escape_string($cryptPassword)."','".mysql_real_escape_string($salt)."')";
 $result = mysql_query($sql);
 if ($result) {
     echo "{\"status\":\"pass\"}";
+    if (!isset($_SESSION)) {
+        session_start();
+    } else {
+        session_destroy();
+        session_start();
+    }
+    $_SESSION['username'] = $username;
+    $_SESSION['email'] = $email;
 } else {
     showErrorJson('An error has occurred.  Please try again');
 }

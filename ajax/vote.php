@@ -3,7 +3,7 @@
 header('content-type: application/json; charset=utf-8');
 
 include("$_SERVER[DOCUMENT_ROOT]/connect.php");
-include("$_SERVER[DOCUMENT_ROOT]/includes/accountUtil.inc");
+include("$_SERVER[DOCUMENT_ROOT]/project1/includes/accountUtil.inc");
 
 if (!isLoggedIn()) {
     showErrorJson("you must be logged in to vote");
@@ -23,7 +23,7 @@ if (alreadyVoted($userId, $postId)) {
     return;
 }
 
-$sql = "insert into votes (user_id, post_id) values ($userId, '".mysql_real_escape_string($postId)."')";
+$sql = "insert into votes (user_id, post_id, timestamp) values ($userId, '".mysql_real_escape_string($postId)."', now())";
 $result = mysql_query($sql);
 
 $sql = "update posts set votes = votes + 1 where id = $postId";

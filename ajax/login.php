@@ -3,7 +3,7 @@
 header('content-type: application/json; charset=utf-8');
 
 include("$_SERVER[DOCUMENT_ROOT]/connect.php");
-include("$_SERVER[DOCUMENT_ROOT]/includes/accountUtil.inc");
+include("$_SERVER[DOCUMENT_ROOT]/project1/includes/accountUtil.inc");
 
 if (isset($_SESSION['username'])) {
     showErrorJson('User already logged in. Please logout first');
