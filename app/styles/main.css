@@ -10,7 +10,13 @@ body {
   color:white
 
 }
-
+.pull-right{
+  float:right;
+}
+.post-row{
+  width: 60%;
+  margin-left: 20%;
+}
 .leftBuffer{
   margin-left: 10%;
 }
