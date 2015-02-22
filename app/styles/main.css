@@ -10,8 +10,23 @@ body {
   color:white
 
 }
+.list-group-item{
+  border: solid 2px #00ccd6;
+}
+
+h3{
+  color:black;
+}
+
 .pull-right{
-  float:right;
+  float:left;
+  width: 80%;
+}
+.vote{
+  width: 20%;
+  border: white 2px solid;
+  float: left;
+
 }
 .post-row{
   width: 60%;
